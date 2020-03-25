@@ -1,0 +1,21 @@
+<ng-container *ngIf="launchDetails$ | async as launchDetails">
+  <section class="container-section">
+    <mat-card class="card">
+      <mat-card-header>
+        <mat-card-title>{{ launchDetails.mission_name }}</mat-card-title>
+      </mat-card-header>
+
+      <img [src]="launchDetails.links.mission_patch" alt="Mission patch of {{ launchDetails.mission_name }}" width="256"
+        height="256" mat-card-image />
+
+      <mat-card-content>
+        <p>{{ launchDetails.details }}</p>
+      </mat-card-content>
+    </mat-card>
+  </section>
+
+  <section class="photo-grid">
+    <img *ngFor="let pic of launchDetails.links.flickr_images" [src]="pic"
+      alt="Picture of {{ launchDetails.mission_name }}" height="300" width="300" loading="lazy" />
+  </section>
+</ng-container>
